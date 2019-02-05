@@ -1,0 +1,262 @@
+# Constants
+set $mod Mod4
+
+# Window border multiplier.
+set $borders 2
+
+# Number of pixels to resize by in resize mode.
+set $resize 2
+
+# aqua
+set $aqua #12FEE7
+
+# dark grey
+set $darkgrey #21222C
+
+# navy blue
+set $navyblue #221D3B
+
+# light faded red
+set $lightpalered #BF616A
+
+# light purple
+set $lightpurple #C2CBFF
+
+# tan
+set $tan #EBDBB2
+
+# faded red
+set $palered #EE0000
+
+# light pink
+set $lightpink #F97EC6
+
+# white
+set $white #FFFFFF
+
+set $workspace1 "一"
+set $workspace2 "二"
+set $workspace3 "三"
+set $workspace4 "四"
+set $workspace5 "五"
+set $workspace6 "六"
+set $workspace7 "七"
+set $workspace8 "八"
+set $workspace9 "九"
+set $workspace10 "十"
+
+set $monitor1 "HDMI-0"
+set $monitor2 "DP-0"
+
+# General Configuration
+font pango:Fira Code 12
+floating_modifier $mod
+#hide_edge_borders both
+#new_window none
+#smart_borders on
+gaps inner 16
+gaps outer -5
+new_float	pixel 4
+new_window pixel 4
+
+# Window-Related Bindings
+bindsym $mod+x kill
+bindsym $mod+Shift+h focus left
+bindsym $mod+Shift+j focus down
+bindsym $mod+Shift+k focus up
+bindsym $mod+Shift+l focus right
+bindsym $mod+h move left
+bindsym $mod+j move down
+bindsym $mod+k move up
+bindsym $mod+l move right
+bindsym $mod+w floating toggle
+bindsym $mod+f fullscreen toggle
+bindsym $mod+shift+f fullscreen toggle global
+bindsym $mod+p sticky toggle
+bindsym $mod+m layout toggle split
+bindsym $mod+b split h
+bindsym $mod+v split v
+#bindsym $mod+space focus mode_toggle
+
+#bindsym $mod+r mode "  "
+#mode "  " {
+#bindsym h resize shrink width 10 px or 10 ppt
+#bindsym j resize grow height 10 px or 10 ppt
+#bindsym k resize shrink height 10 px or 10 ppt
+#bindsym l resize grow width 10 px or 10 ppt
+#bindsym Escape mode "default"
+#}
+
+# Restart-Related Bindings
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+# Program-Related Bindings[]
+bindsym $mod+g exec --no-startup-id taskset -a 0x55550000 firefox
+bindsym $mod+a exec --no-startup-id taskset -a 0x55555555 atom
+bindsym $mod+u exec --no-startup-id urxvtc
+# bindsym $mod+i exec itch
+bindsym $mod+o exec --no-startup-id taskset -a 0x55555555 steam
+# bindsym $mod+s exec slack
+bindsym $mod+d exec --no-startup-id taskset -a 0x00005555 Discord
+
+bindsym --release $mod+Print scrot -s -d2
+bindsym --release $mod+Shift+Print scrot -m -d2
+bindsym --release Print exec scrot -u -b -d2
+
+bindsym $mod+r exec rofi -show run -lines 1 -eh 1 -width 60 -padding 10 -opacity "85" -bw 0 -font "VCR OSD Mono 18"
+#bindsym $mod+d exec rofi -show run -lines 1 -eh 1 -width 60 -padding 10 -opacity "85" -bw 0 -font "VCR OSD Mono 18"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Volume & Media Bindings
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
+bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Startup Programs
+exec --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --rate 60 --pos 1920x0 --rotate normal --output DVI-I-1 --off --output DVI-I-0 --off --output DP-1 --off --output DP-0 --primary --mode 1920x1080 --rate 144 --pos 0x0 --rotate normal
+exec --no-startup-id ckb-next -b
+exec --no-startup-id nm-applet
+exec --no-startup-id urxvtd -q -f -o
+# exec --no-startup-id /home/skw/Scripts/fancurve
+exec_always --no-startup-id feh --bg-scale ~/.wallpaper
+# exec_always --no-startup-id xwinwrap -b -fs -sp -fs -nf -ov -- gifview -aUw WID "`cat ~/.bgpath`"
+
+# Workspace-Related Bindings
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+#bindsym $mod+. workspace next|prev|next_on_output|prev_on_output
+
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# Workspace Monitors
+workspace $workspace1 output $monitor1
+workspace $workspace2 output $monitor2
+workspace $workspace3 output $monitor2
+workspace $workspace4 output $monitor2
+workspace $workspace5 output $monitor2
+workspace $workspace6 output $monitor2
+workspace $workspace7 output $monitor1
+workspace $workspace8 output $monitor2
+workspace $workspace9 output $monitor2
+workspace $workspace10 output $monitor1
+
+# Program Workspaces
+assign [class="(?i)firefox"] $workspace1
+assign [class="(?i)urxvt"] $workspace2
+assign [class="(?i)atom"] $workspace2
+assign [class="(?i)signal"] $workspace3
+assign [class="(?i)slack"] $workspace3
+assign [class="^Minecraft .*"] $workspace3
+assign [class="(?i)keybase"] $workspace4
+assign [class="(?i)discord"] $workspace10
+assign [class="obs"] $workspace7
+assign [class="Borderlands2"] $workspace6
+
+assign [class="(?i)Steam"] $workspace5
+
+# Spotify is broken, so we need to move it late
+for_window [class="Spotify"] move to workspace $workspace3
+
+for_window [class="(?i)atom"] resize set 63 ppt
+
+# Fixes for steam
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Steam Controller Configuration$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+for_window [title="XCOM 2 Options"] floating enable
+
+# Dont give focus when discord is restarted
+no_focus [class="(?i)discord"]
+
+# Floating
+for_window [class="Lxappearance"] floating enable
+
+# Fullscreen
+#for_window [class="Borderlands2"] floating disable
+#for_window [class="Borderlands2"] fullscreen enable
+for_window [title="Dragonfall"] fullscreen enable global
+#for_window [title="Dragonfall"] fullscreen enable
+
+
+# Window colours:
+
+client.focused          $aqua $aqua $tan $aqua
+client.focused_inactive $lightpurple $lightpurple $tan $lightpurple
+client.unfocused        $lightpurple $lightpurple $tan $lightpurple
+client.urgent           $lightpink $lightpink $palered $lightpink
+
+
+#Bar
+bar {
+  strip_workspace_numbers no
+  position top
+  height 25
+  status_command i3blocks -c ~/.config/i3/i3blocks.1.conf
+  separator_symbol "|"
+  tray_output primary
+  font pango:Noto Sans 12
+  output $monitor2
+  colors {
+    background $darkgrey
+    statusline $aqua
+    separator  $lightpink
+    #                   border        background text
+    focused_workspace   $lightpink    $navyblue  $white
+    active_workspace    $lightpink    $navyblue  $white
+    inactive_workspace  $navyblue     $navyblue  $white
+    urgent_workspace    $lightpalered $lightpink $white
+  }
+}
+bar {
+  strip_workspace_numbers no
+  position top
+  height 25
+  status_command i3blocks -c ~/.config/i3/i3blocks.2.conf
+  separator_symbol "|"
+  tray_output none
+  font pango:Noto Sans 12
+  output $monitor1
+  colors {
+    background $darkgrey
+    statusline $aqua
+    separator  $lightpink
+    #                   border  background text
+    focused_workspace   $lightpink $navyblue $white
+    active_workspace    $lightpink $navyblue $white
+    inactive_workspace  $navyblue $navyblue $white
+    urgent_workspace    $lightpalered $lightpink $white
+  }
+}
+#bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+#bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
