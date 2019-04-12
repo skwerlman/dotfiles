@@ -224,7 +224,7 @@ in
     transmission-gtk
     vlc
     wineWowPackages.staging
-    wireshark-gtk
+    wireshark-qt
     wxhexeditor
     xorg.xwininfo
     ycmd
