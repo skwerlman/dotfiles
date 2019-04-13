@@ -50,6 +50,13 @@ in
     netdata = pkgs.lib.overrideDerivation pkgs.netdata (attrs: rec {
       buildInputs = [ pkgs.lm_sensors ] ++ attrs.buildInputs;
     });
+    spice-protocol = pkgs.lib.overrideDerivation pkgs.spice-protocol (attrs: rec {
+      name = "spice-protocol-0.12.14";
+      src = pkgs.fetchurl {
+        url = "https://www.spice-space.org/download/releases/${name}.tar.bz2";
+        sha256 = "170ckpgazvqv7hxy209myg67pqnd6c0gvr4ysbqgsfch6320nd90";
+      };
+    });
 
   };
 
